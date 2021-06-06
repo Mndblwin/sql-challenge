@@ -42,7 +42,18 @@ FOREIGN KEY (dept_no) REFERENCES Departments(dept_no)
 
 SELECT * FROM Department_Manager
 
+--Create table for Salaries
+DROP TABLE IF EXISTS Salaries
 
+CREATE TABLE Salaries (
+	emp_no BIGINT NOT NULL,
+	salary BIGINT NOT NULL,
+	from_date DATE NOT NULL,
+	to_date DATE NOT NULL,
+	FOREIGN KEY(emp_no) REFERENCES Employees(emp_no)
+);
+
+SELECT * FROM Salaries
 
 
 
