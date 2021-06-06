@@ -48,3 +48,17 @@ Employees.last_name,
 Employees.sex
 FROM Employees
 WHERE first_name = 'Hercules' AND last_name like 'B%';
+
+--6.List all employees in the Sales department, including their
+-- employee number, last name, first name, and department name.
+SELECT 
+Employees.emp_no, 
+Employees.last_name, 
+Employees.first_name,
+Department_Manager.dept_no
+FROM Employees 
+LEFT JOIN Department_Manager 
+ON Employees.emp_no=Department_Manager.emp_no
+INNER JOIN Departments 
+ON Departments.dept_no=Department_Manager.dept_no
+WHERE Departments.dept_name='Sales';
