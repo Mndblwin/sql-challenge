@@ -46,15 +46,27 @@ SELECT * FROM Department_Manager
 DROP TABLE IF EXISTS Salaries
 
 CREATE TABLE Salaries (
-	emp_no BIGINT NOT NULL,
-	salary BIGINT NOT NULL,
-	from_date DATE NOT NULL,
-	to_date DATE NOT NULL,
-	FOREIGN KEY(emp_no) REFERENCES Employees(emp_no)
+emp_no BIGINT NOT NULL,
+salary BIGINT NOT NULL,
+from_date DATE NOT NULL,
+to_date DATE NOT NULL,
+FOREIGN KEY(emp_no) REFERENCES Employees(emp_no)
 );
 
 SELECT * FROM Salaries
 
+--Create table for Titles
+DROP TABLE IF EXISTS Titles
+
+CREATE TABLE Titles (
+emp_no INT NOT NULL,
+title VARCHAR(20) NOT NULL,
+from_date DATE NOT NULL,
+to_date DATE NOT NULL,
+FOREIGN KEY(emp_no) REFERENCES employees(emp_no)
+);
+
+SELECT * FROM Titles
 
 
 
