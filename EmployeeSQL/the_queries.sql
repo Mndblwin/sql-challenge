@@ -2,7 +2,7 @@
 SELECT Employees.emp_no
 Employees.last_name,
 Employees.first_name,
-Employees.gender,
+Employees.sex,
 Salaries.salary
 FROM Employees
 LEFT JOIN Salaries
@@ -19,9 +19,7 @@ SELECT Deparment_Manager.dept_no,
 Departments.dept_name,
 Department_Manager.emp_no,
 Employees.last_name, 
-Employees.first_name,
-Department_Manager.from_date,
-Department_Manager.to_date
+Employees.first_name
 FROM Department_Manager
 LEFT JOIN Departments
 ON Department_Manager.dept_no = Departments.dept_no
@@ -34,11 +32,11 @@ SELECT
 Employees.emp_no,
 Employees.last_name,
 Employees.first_name,
-Department_Manager.dept_no,
+dept_emp.dept_no,
 Departments.dept_name
 FROM Employees 
-LEFT JOIN Department_Manager ON Employees.emp_no=Department_Manager.emp_no
-LEFT JOIN Departments ON Departments.dept_no=Department_Manager.dept_no
+INNER JOIN Department_Manager ON Employees.emp_no=dept_emp.emp_no
+INNER JOIN Departments ON Departments.dept_no=dept_emp.dept_no
 order by emp_no;
 
 --5.List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
@@ -54,12 +52,12 @@ SELECT
 Employees.emp_no, 
 Employees.last_name, 
 Employees.first_name,
-Department_Manager.dept_no
+dept_emp.dept_no
 FROM Employees 
-LEFT JOIN Department_Manager 
-ON Employees.emp_no=Department_Manager.emp_no
+LEFT JOIN dept_emp
+ON Employees.emp_no=dept_emp.emp_no
 INNER JOIN Departments 
-ON Departments.dept_no=Department_Manager.dept_no
+ON Departments.dept_no=dept_emp.dept_no
 WHERE Departments.dept_name='Sales';
 
 --7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
@@ -67,12 +65,12 @@ SELECT
 Employees.emp_no, 
 Employees.last_name, 
 Employees.first_name,
-Department_Manager.dept_no
+dept_emp.dept_no
 FROM Employees 
-LEFT JOIN Department_Manager 
-ON Employees.emp_no=Department_Manager.emp_no
+LEFT JOIN dept_emp 
+ON Employees.emp_no=dept_emp.emp_no
 INNER JOIN Departments 
-ON Departments.dept_no=Department_Manager.dept_no
+ON Departments.dept_no=dept_emp.dept_no
 WHERE Departments.dept_name in ('Sales', 'Development')
 
 --8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
