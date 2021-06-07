@@ -33,3 +33,8 @@ emp_no INT FK >- Employees.emp_no
 title VARCHAR
 from_date DATE
 to_date DATE
+
+dept_emp 
+-
+emp_no INT,
+dept_no VARCHAR
