@@ -1,72 +1,73 @@
 --Setting up the SchemaManager
 
 --Create table for employees
-DROP TABLE IF EXISTS Employees
+DROP TABLE IF EXISTS employees;
 
-CREATE TABLE Employees (
-emp_no INT NOT NULL
-emp_title_id VARCHAR (50) NOT NULL,
-birth_date DATE NOT NULL,
-first_name VARCHAR (50) NOT NULL,
-last_name VARCHAR (50) NOT NULL,
-sex VARCHAR (50) NOT NULL,
-hire_date DATE NOT NULL,
-PRIMARY KEY (emp_no)
+CREATE TABLE employees (
+	emp_no INT PRIMARY KEY,
+	emp_title_id VARCHAR,
+	birth_date DATE,
+	first_name VARCHAR,
+	last_name VARCHAR,
+	sex VARCHAR,
+	hire_date DATE
 );
 
-SELECT * FROM Employees
+SELECT * FROM employees
 
 
 --Create table for Departments
-DROP TABLE IF EXISTS Departments
+DROP TABLE IF EXISTS Departments;
 
 CREATE TABLE Departments (
-dept_no VARCHAR (50) NOT NULL,
-dept_name VARCHAR (50) NOT NULL,
+dept_no VARCHAR,
+dept_name VARCHAR,
 PRIMARY KEY (dept_no)
 );
 
 SELECT * FROM Departments
 
 --Create table for Department_Manager
-DROP TABLE IF EXISTS Department_Manager
+DROP TABLE IF EXISTS Department_Manager;
 
 CREATE TABLE Department_Manager (
-dept_no VARCHAR (50) NOT NULL,
-emp_no VARCHAR (50) NOT NULL,
-from_date DATE NOT NULL,
-to_date DATE NOT NULL,
-FOREIGN KEY (emp_no) REFERENCES Employees(emp_no),
-FOREIGN KEY (dept_no) REFERENCES Departments(dept_no)
+dept_no VARCHAR,
+emp_no INT
 );
 
 SELECT * FROM Department_Manager
 
+
 --Create table for Salaries
-DROP TABLE IF EXISTS Salaries
+DROP TABLE IF EXISTS Salaries;
 
 CREATE TABLE Salaries (
-emp_no BIGINT NOT NULL,
-salary BIGINT NOT NULL,
-from_date DATE NOT NULL,
-to_date DATE NOT NULL,
-FOREIGN KEY(emp_no) REFERENCES Employees(emp_no)
+emp_no INT,
+salary BIGINT
+
 );
 
 SELECT * FROM Salaries
 
 --Create table for Titles
-DROP TABLE IF EXISTS Titles
+DROP TABLE IF EXISTS Titles;
 
 CREATE TABLE Titles (
-emp_no INT NOT NULL,
-title VARCHAR(20) NOT NULL,
-from_date DATE NOT NULL,
-to_date DATE NOT NULL,
-FOREIGN KEY(emp_no) REFERENCES employees(emp_no)
+title_id VARCHAR,
+title VARCHAR
+
 );
 
 SELECT * FROM Titles
 
+--Create table for Department Employees
+DROP TABLE IF EXISTS dept_emp;
 
+CREATE TABLE dept_emp (
+emp_no INT,
+dept_no VARCHAR
+
+);
+
+SELECT * FROM dept_emp
 
